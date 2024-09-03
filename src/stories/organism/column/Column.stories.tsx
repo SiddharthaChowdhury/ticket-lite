@@ -1,10 +1,11 @@
+import { ComponentProps, useCallback, useState } from "react";
 import { TColumn, TTicket } from "../../../data/state/types";
 import { Ticket } from "../../atom/ticket/Ticket";
 import { DndArea } from "../../common/DndArea";
 import { Column } from "./Column";
 
 const story = {
-  title: "Molecule/Column",
+  title: "Organism/Column",
   component: Column,
 };
 
@@ -25,10 +26,20 @@ const DUMMY_COLUMN: TColumn = {
 };
 
 const Default = () => {
+  const [tickets, setTickets] = useState(TICKET_DUMMY);
+
+  const handleTicketCreate: ComponentProps<typeof Column>["onCreateNewTicket"] =
+    useCallback((ticket) => {
+      setTickets((existing) => [
+        ...existing,
+        { ...ticket, id: `${Date.now()}` },
+      ]);
+    }, []);
+
   return (
     <DndArea>
-      <Column column={DUMMY_COLUMN}>
-        {TICKET_DUMMY.map((t) => (
+      <Column column={DUMMY_COLUMN} onCreateNewTicket={handleTicketCreate}>
+        {tickets.map((t) => (
           <Ticket
             key={t.id}
             ticket={t}
