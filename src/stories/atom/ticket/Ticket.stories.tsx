@@ -1,3 +1,4 @@
+import { DndArea } from "../../common/DndArea";
 import { Ticket } from "./Ticket";
 
 const story = {
@@ -5,8 +6,17 @@ const story = {
   component: Ticket,
 };
 
+const TICKET_DUMMY = {
+  title: "Some title of the ticket",
+  id: "t1",
+};
+
 const Default = () => {
-  return <Ticket title="Lorem ipsum dolor sit amet bla bla bla" />;
+  return (
+    <DndArea>
+      <Ticket ticket={TICKET_DUMMY} onTicketClick={console.log} columnId="c1" />
+    </DndArea>
+  );
 };
 
 export default story;

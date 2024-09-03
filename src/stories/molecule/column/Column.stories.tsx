@@ -1,4 +1,6 @@
+import { TColumn, TTicket } from "../../../data/state/types";
 import { Ticket } from "../../atom/ticket/Ticket";
+import { DndArea } from "../../common/DndArea";
 import { Column } from "./Column";
 
 const story = {
@@ -6,12 +8,36 @@ const story = {
   component: Column,
 };
 
+const TICKET_DUMMY: TTicket[] = [
+  {
+    id: "t1",
+    title: "Some title",
+  },
+  {
+    id: "t2",
+    title: "Random 2nd title",
+  },
+];
+
+const DUMMY_COLUMN: TColumn = {
+  id: "c1",
+  title: "To do",
+};
+
 const Default = () => {
   return (
-    <Column title="Lorem ipsum">
-      <Ticket title="Eager to serve in the military" />
-      <Ticket title="Lorem ipsum for tickets" />
-    </Column>
+    <DndArea>
+      <Column column={DUMMY_COLUMN}>
+        {TICKET_DUMMY.map((t) => (
+          <Ticket
+            key={t.id}
+            ticket={t}
+            columnId={DUMMY_COLUMN.id}
+            onTicketClick={console.log}
+          />
+        ))}
+      </Column>
+    </DndArea>
   );
 };
 
