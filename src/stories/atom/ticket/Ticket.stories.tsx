@@ -1,4 +1,4 @@
-import { DndArea } from "../../common/DndArea";
+import { StorybookDndArea } from "../../common/StorybookDndArea";
 import { Ticket } from "./Ticket";
 
 const story = {
@@ -13,9 +13,9 @@ const TICKET_DUMMY = {
 
 const Default = () => {
   return (
-    <DndArea>
+    <StorybookDndArea>
       <Ticket ticket={TICKET_DUMMY} onTicketClick={console.log} columnId="c1" />
-    </DndArea>
+    </StorybookDndArea>
   );
 };
 

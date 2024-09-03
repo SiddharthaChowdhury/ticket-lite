@@ -1,7 +1,7 @@
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import { PropsWithChildren } from "react";
 
-const DndArea = ({ children }: PropsWithChildren) => {
+const StorybookDndArea = ({ children }: PropsWithChildren) => {
   const handleDragEnd = (event: DragEndEvent) => {
     const { over, active } = event;
 
@@ -15,4 +15,4 @@ const DndArea = ({ children }: PropsWithChildren) => {
   return <DndContext onDragEnd={handleDragEnd}>{children}</DndContext>;
 };
 
-export { DndArea };
+export { StorybookDndArea };

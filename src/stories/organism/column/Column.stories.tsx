@@ -1,7 +1,7 @@
 import { ComponentProps, useCallback, useState } from "react";
 import { TColumn, TTicket } from "../../../data/state/types";
 import { Ticket } from "../../atom/ticket/Ticket";
-import { DndArea } from "../../common/DndArea";
+import { StorybookDndArea } from "../../common/StorybookDndArea";
 import { Column } from "./Column";
 
 const story = {
@@ -37,7 +37,7 @@ const Default = () => {
     }, []);
 
   return (
-    <DndArea>
+    <StorybookDndArea>
       <Column column={DUMMY_COLUMN} onCreateNewTicket={handleTicketCreate}>
         {tickets.map((t) => (
           <Ticket
@@ -48,7 +48,7 @@ const Default = () => {
           />
         ))}
       </Column>
-    </DndArea>
+    </StorybookDndArea>
   );
 };
 
