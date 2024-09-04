@@ -23,11 +23,19 @@ Apart from what comes from a "CRA" setup following were added
 
 ## Requirements/Features
 
-- ✅ A user should be able to add and label columns. _(Capped it max 4)_
-- ✅ A user should be able to add and edit cards. _(referring "cards" as "tickets" in the app)_
-- ✅ A user should be able to move cards between columns. _(DragAndDrop added)_
+- ✅ A user should be able to add and label columns.
+  - _Capped it to max 4 column_
+  - new column can be created by pressing [ + ] button next to existing column
+- ✅ A user should be able to add and edit cards.
+  - _referring "cards" as "tickets" in the app_
+  - Tickets can be added from any column by pressing [ + ] button in the column
+- ✅ A user should be able to move cards between columns.
+  - _DragAndDrop feature is added to move tickets_
 - ✅ Do make sure the available interactions are intuitive. In other words, we will be considering usability.
-- ✅ Some kind of persistency (LocalStorage or SessionStorage) is encouraged, though not required. _(Used LocalStorage)_
+  - _Press and hold before dragging a ticket_
+  - _Click on a ticket to edit/view_
+- ✅ Some kind of persistency (LocalStorage or SessionStorage) is encouraged, though not required.
+  - _Used LocalStorage_
 
 ## To make it a real app following (minimum) need to be implemented:
 
