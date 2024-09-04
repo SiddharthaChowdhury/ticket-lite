@@ -8,6 +8,7 @@ import CreateColumnButton from "./partials/CreateColumnButton";
 import { MainContainerStyled } from "./styles";
 import { useBoardPage } from "./useBoardPage";
 import TicketViewForm from "../stories/molecule/ticketViewForm/TicketViewForm";
+import { CONST } from "../utils/constants";
 
 const BoardPage = () => {
   const {
@@ -37,7 +38,9 @@ const BoardPage = () => {
   return (
     <Container>
       <Row>
-        <Col md={12}>Top nav </Col>
+        <Col md={12}>
+          <h2>Limited issue board 🦄🪽</h2>
+        </Col>
       </Row>
       <Row>
         <Col md={9}>
@@ -81,7 +84,7 @@ const BoardPage = () => {
                   </Column>
                 );
               })}
-              <CreateColumnButton />
+              {columns.size < CONST.MAX_NO_OF_COLS && <CreateColumnButton />}
             </DndContext>
           </MainContainerStyled>
         </Col>
