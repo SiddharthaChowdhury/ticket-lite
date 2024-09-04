@@ -13,6 +13,7 @@ import { useSelector } from "../data/context/useSelector";
 import { Column } from "../stories/organism/column/Column";
 import { TTicket } from "../data/state/types";
 import { Ticket } from "../stories/atom/ticket/Ticket";
+import CreateColumnButton from "./partials/CreateColumnButton";
 
 const BoardPage = () => {
   const dispatch = useAppDispatch();
@@ -102,6 +103,7 @@ const BoardPage = () => {
                   </Column>
                 );
               })}
+              <CreateColumnButton />
             </DndContext>
           </MainContainerStyled>
         </Col>
