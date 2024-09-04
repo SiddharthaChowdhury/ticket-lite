@@ -1,12 +1,22 @@
+import {
+  loadStateFromLocalStorage,
+  saveStateToLocalStorage,
+} from "../../utils/localStorage";
 import { TAction, TState, TTicket } from "./types";
 
-export const INITIAL_STATE: TState = {
-  structure: new Map([["c1", ["t1", "t2"]]]),
-  tickets: new Map([
-    ["t1", { title: "Initial board data-structure creation", id: "t1" }],
-    ["t2", { title: "Add update feature", id: "t2" }],
+export const INITIAL_STATE: TState = loadStateFromLocalStorage() || {
+  structure: new Map([
+    ["c1", ["t1", "t2"]],
+    ["c2", []],
   ]),
-  columns: new Map([["c1", { title: "Backlog", id: "c1" }]]),
+  tickets: new Map([
+    ["t1", { title: "t1 Hello World!", id: "t1" }],
+    ["t2", { title: "t2 Hello Mars!", id: "t2" }],
+  ]),
+  columns: new Map([
+    ["c1", { title: "Backlog", id: "c1" }],
+    ["c2", { title: "To do", id: "c2" }],
+  ]),
   ticketIdView: "t1",
 };
 
@@ -14,20 +24,32 @@ export const reducer = (
   state: TState = INITIAL_STATE,
   action: TAction
 ): TState => {
+  let newState;
+
   switch (action.type) {
     case "UPDATE_TICKET":
-      return reduceUpdateTicket(state, action);
+      newState = reduceUpdateTicket(state, action);
+      break;
     case "CREATE_COLUMN":
-      return reduceCreateColumn(state, action);
+      newState = reduceCreateColumn(state, action);
+      break;
     case "CREATE_TICKET":
-      return reduceCreateTicket(state, action);
+      newState = reduceCreateTicket(state, action);
+      break;
     case "MOVE_TICKET":
-      return reduceMoveTicket(state, action);
+      newState = reduceMoveTicket(state, action);
+      break;
     case "SET_TICKET_VIEW":
-      return reduceSetTicketView(state, action);
+      newState = reduceSetTicketView(state, action);
+      break;
     default:
-      return state;
+      newState = state;
+      break;
   }
+
+  saveStateToLocalStorage(newState);
+
+  return newState;
 };
 
 const reduceSetTicketView = (
