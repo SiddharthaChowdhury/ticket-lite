@@ -33,4 +33,8 @@ export type TAction =
       type: "CREATE_TICKET";
       ticket: Omit<TTicket, "id">;
       inColumnId: string;
+    }
+  | {
+      type: "SET_TICKET_VIEW";
+      ticketId: string;
     };

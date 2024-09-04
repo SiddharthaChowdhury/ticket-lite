@@ -22,9 +22,21 @@ export const reducer = (
       return reduceCreateTicket(state, action);
     case "MOVE_TICKET":
       return reduceMoveTicket(state, action);
+    case "SET_TICKET_VIEW":
+      return reduceSetTicketView(state, action);
     default:
       return state;
   }
+};
+
+const reduceSetTicketView = (
+  state: TState,
+  { ticketId }: Extract<TAction, { type: "SET_TICKET_VIEW" }>
+) => {
+  return {
+    ...state,
+    ticketId,
+  };
 };
 
 const reduceUpdateTicket = (
