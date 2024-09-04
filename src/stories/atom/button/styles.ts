@@ -15,6 +15,7 @@ export const Button = styled.button<{ $isDisabled?: boolean }>`
       : `rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px`};
 
   &:hover {
+    cursor: pointer;
     box-shadow: ${(p) =>
       p.$isDisabled
         ? "none"

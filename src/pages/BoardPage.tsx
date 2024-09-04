@@ -22,7 +22,7 @@ const BoardPage = () => {
       useSensor(MouseSensor, {
         // This is necessary to facilitate onClick on the draggable item
         activationConstraint: {
-          delay: 300,
+          delay: 200,
           tolerance: 0,
         },
       })
