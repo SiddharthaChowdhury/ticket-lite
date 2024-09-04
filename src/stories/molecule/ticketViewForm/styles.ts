@@ -10,7 +10,10 @@ export const TicketViewStyled = styled.div`
   }
 
   .buttonContainer {
+    display: inline-flex;
+    gap: 5px;
+    width: 200px;
+    align-items: center;
     margin-top: 10px;
-    width: 100px;
   }
 `;

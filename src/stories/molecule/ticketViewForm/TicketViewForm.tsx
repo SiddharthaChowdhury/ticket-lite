@@ -53,6 +53,7 @@ const TicketViewForm = ({ ticket, onSaveEdit }: TProps) => {
             >
               Save
             </Button>
+            <Button onClick={handleToggleEdit}>〰️ Cancel</Button>
           </div>
         </>
       )}
