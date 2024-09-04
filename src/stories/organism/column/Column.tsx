@@ -7,7 +7,7 @@ import { ColumnStyled } from "./styles";
 
 type TProps = {
   column: TColumn;
-  onCreateNewTicket: (ticket: Omit<TTicket, "id">) => void;
+  onCreateNewTicket: (ticket: Omit<TTicket, "id">, columnId: string) => void;
 };
 
 const Column = ({
@@ -21,9 +21,9 @@ const Column = ({
 
   const handleCreateTicket = useCallback(
     (title: string) => {
-      onCreateNewTicket({ title });
+      onCreateNewTicket({ title }, column.id);
     },
-    [onCreateNewTicket]
+    [column.id, onCreateNewTicket]
   );
 
   return (
