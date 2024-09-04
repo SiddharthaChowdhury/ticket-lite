@@ -1,3 +1,5 @@
+## [Github](https://github.com/SiddharthaChowdhury/ticket-lite) | [History](https://github.com/SiddharthaChowdhury/ticket-lite/commits/main/)
+
 ## Getting started
 
 1. After cloning the repo, `cd ticket-lite`
