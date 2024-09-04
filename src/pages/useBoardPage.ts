@@ -49,5 +49,22 @@ export const useBoardPage = () => {
     [dispatch]
   );
 
-  return { handleCreateNewTicket, handleTicketSelect, handleTicketMove };
+  const handleEditTicket = useCallback(
+    (ticket: TTicket) => {
+      dispatch({
+        type: "UPDATE_TICKET",
+        payload: {
+          ...ticket,
+        },
+      });
+    },
+    [dispatch]
+  );
+
+  return {
+    handleCreateNewTicket,
+    handleTicketSelect,
+    handleTicketMove,
+    handleEditTicket,
+  };
 };

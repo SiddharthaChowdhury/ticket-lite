@@ -5,7 +5,7 @@ import { InputText } from "../../atom/inputText/InputText";
 import { Button } from "../../atom/button/styles";
 
 type TProps = {
-  ticket: TTicket;
+  ticket?: TTicket;
   onSaveEdit: (ticket: TTicket) => void;
 };
 
@@ -38,6 +38,8 @@ const TicketViewForm = ({ ticket, onSaveEdit }: TProps) => {
 
     handleToggleEdit();
   }, [handleToggleEdit, onSaveEdit, ticket, title]);
+
+  if (!ticket) return null;
 
   return (
     <TicketViewStyled>

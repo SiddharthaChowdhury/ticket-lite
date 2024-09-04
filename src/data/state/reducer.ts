@@ -7,6 +7,7 @@ export const INITIAL_STATE: TState = {
     ["t2", { title: "Add update feature", id: "t2" }],
   ]),
   columns: new Map([["c1", { title: "Backlog", id: "c1" }]]),
+  ticketIdView: "t1",
 };
 
 export const reducer = (
@@ -32,10 +33,10 @@ export const reducer = (
 const reduceSetTicketView = (
   state: TState,
   { ticketId }: Extract<TAction, { type: "SET_TICKET_VIEW" }>
-) => {
+): TState => {
   return {
     ...state,
-    ticketId,
+    ticketIdView: ticketId,
   };
 };
 

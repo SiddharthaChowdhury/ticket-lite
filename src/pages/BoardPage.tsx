@@ -7,9 +7,15 @@ import { Column } from "../stories/organism/column/Column";
 import CreateColumnButton from "./partials/CreateColumnButton";
 import { MainContainerStyled } from "./styles";
 import { useBoardPage } from "./useBoardPage";
+import TicketViewForm from "../stories/molecule/ticketViewForm/TicketViewForm";
 
 const BoardPage = () => {
-  const { structure, columns, tickets } = useSelector((state) => state);
+  const {
+    structure,
+    columns,
+    tickets,
+    ticketIdView: ticketView,
+  } = useSelector((state) => state);
   const { current: sensors } = useRef(
     useSensors(
       useSensor(MouseSensor, {
@@ -21,8 +27,12 @@ const BoardPage = () => {
       })
     )
   );
-  const { handleCreateNewTicket, handleTicketMove, handleTicketSelect } =
-    useBoardPage();
+  const {
+    handleCreateNewTicket,
+    handleTicketMove,
+    handleTicketSelect,
+    handleEditTicket,
+  } = useBoardPage();
 
   return (
     <Container>
@@ -34,9 +44,9 @@ const BoardPage = () => {
           <MainContainerStyled>
             <DndContext onDragEnd={handleTicketMove} sensors={sensors}>
               {Array.from(structure.entries()).map(([columnId, ticketIds]) => {
-                const col = columns.get(columnId);
+                const column = columns.get(columnId);
 
-                if (!col) {
+                if (!column) {
                   console.error(
                     `Error! Column with id:${columnId} was not found.`
                   );
@@ -45,7 +55,8 @@ const BoardPage = () => {
 
                 return (
                   <Column
-                    column={col}
+                    key={columnId}
+                    column={column}
                     onCreateNewTicket={handleCreateNewTicket}
                   >
                     {ticketIds.map((ticketId: string) => {
@@ -74,7 +85,12 @@ const BoardPage = () => {
             </DndContext>
           </MainContainerStyled>
         </Col>
-        <Col md={3}>Ticket view</Col>
+        <Col md={3}>
+          <TicketViewForm
+            ticket={tickets.get(ticketView)}
+            onSaveEdit={handleEditTicket}
+          />
+        </Col>
       </Row>
     </Container>
   );

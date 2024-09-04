@@ -12,6 +12,7 @@ export type TState = {
   structure: Map<string, string[]>;
   tickets: Map<string, TTicket>;
   columns: Map<string, TColumn>;
+  ticketIdView: string;
 };
 
 export type TAction =
